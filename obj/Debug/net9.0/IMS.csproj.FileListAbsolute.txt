@@ -121,3 +121,4 @@ C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\refint\IMS.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.pdb
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.genruntimeconfig.cache
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\ref\IMS.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.sourcelink.json
