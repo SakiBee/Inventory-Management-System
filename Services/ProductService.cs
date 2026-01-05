@@ -12,7 +12,12 @@ namespace IMS.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _repository;
-        public ProductService(IProductRepository repository) => _repository = repository;
+        private readonly ILogger<ProductService> _logger;
+        public ProductService(IProductRepository repository, ILogger<ProductService> logger)
+        {
+            _repository = repository;
+            _logger = logger;
+        }
 
         public async Task<ProductReadDto> CreateAsync(ProductCreateDTO dto)
         {
@@ -21,10 +26,21 @@ namespace IMS.Services
                 Name = dto.Name,
                 Category = dto.Category,
                 Price = dto.Price,
-                Quantity = dto.Quantity
+                Quantity = dto.Quantity,
+                CreatedAt = DateTime.UtcNow
             };
 
             await _repository.AddAsync(product);
+
+            _logger.LogInformation(
+                "Product created | Id: {Id} | Name: {Name} | Category: {Category} | Time: {Time}",
+
+                product.Id,
+                product.Name,
+                product.Category,
+                product.CreatedAt
+             );
+
             return MapToReadDto(product);
         }
 

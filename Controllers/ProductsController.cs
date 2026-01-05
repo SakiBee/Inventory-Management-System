@@ -43,8 +43,8 @@ namespace IMS.Controllers
         [HttpGet("priceFilter")]
         public async Task<IActionResult> GetPriceFilter([FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice)
         {
-            var res = await _service.GetProductByPriceRange(minPrice, maxPrice);
-            return Ok(res);
+            var products = await _service.GetProductByPriceRange(minPrice, maxPrice);
+            return Ok(products);
         }
     }
 }

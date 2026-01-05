@@ -1,6 +1,9 @@
+using IMS.Data;
+using IMS.Middlewares;
+using IMS.Repositories;
+using IMS.Repositories.Interfaces;
 using IMS.Services;
 using IMS.Services.Interfaces;
-using IMS.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,8 +24,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Services
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
