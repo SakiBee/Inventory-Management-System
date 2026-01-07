@@ -6,6 +6,9 @@ using IMS.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using IMS.Repositories.Interfaces;
+using CsvHelper;
+using System.Globalization;
+using IMS.DTOs.Common;
 
 namespace IMS.Services
 {
@@ -63,7 +66,7 @@ namespace IMS.Services
 
             product.Name = dto.Name;
             product.Category = dto.Category;
-            product.Price = dto.Price;
+            product.Price = dto.Price; 
             product.Quantity = dto.Quantity;
 
             return await _repository.UpdateAsync(product);
@@ -92,5 +95,44 @@ namespace IMS.Services
             return products.Select(MapToReadDto).ToList();
         }
 
+        public async Task<int> UploadProductFromCsvAsync(Stream fileStream)
+        {
+            using var reader = new StreamReader(fileStream);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+            var records = csv.GetRecords<ProductCsvDto>().ToList();
+
+            var products = records.Select(r => new Product
+            {
+                Name = r.Name,
+                Category = r.Category,
+                Price = r.Price,
+                Quantity = r.Quantity,
+                CreatedAt = DateTime.Now,
+            }).ToList();
+
+            if(records.Any())
+            {
+                await _repository.AddRangeAsync(products);
+            }
+            return records.Count;
+        }
+
+        public async Task<PagedResultDto<ProductReadDto>> GetPagedAsync(int pageNumber, int pageSize)
+        {
+            pageNumber = pageNumber <= 0 ? 0 : pageNumber;
+            pageSize = pageSize <= 0 ? 10 : pageSize;
+
+            var totalCount = await _repository.CountAsync();
+            var products = await _repository.GetPagedAsync(pageNumber, pageSize);
+
+            return new PagedResultDto<ProductReadDto>
+            {
+                Items = products.Select(MapToReadDto),
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+        }
     }
 }

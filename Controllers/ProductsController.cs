@@ -50,5 +50,34 @@ namespace IMS.Controllers
             var products = await _service.GetProductByPriceRange(minPrice, maxPrice);
             return Ok(products);
         }
+
+        //[Authorize(Roles = "Admin")]
+        [HttpPost("bulk-upload")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> BulkUpload([FromForm] ProductBulkUploadDto dto)
+        {
+            if (dto.File == null || dto.File.Length == 0)
+            {
+                return BadRequest("Please upload a valid CSV file.");
+            }
+
+            try
+            {
+                using var stream = dto.File.OpenReadStream();
+                int count = await _service.UploadProductFromCsvAsync(stream);
+                return Ok(new { message = $"{count} product uploaded successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error processing CSV: {ex.Message}");
+            }
+        }
+
+        [HttpGet("pagination")]
+        public async Task<IActionResult> GetPaged([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        {
+            var result = await _service.GetPagedAsync(pageNumber, pageSize);
+            return Ok(result);
+        }
     }
 }

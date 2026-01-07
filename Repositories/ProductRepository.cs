@@ -16,6 +16,11 @@ namespace IMS.Repositories
             await _context.SaveChangesAsync();
             return product;
         }
+        public async Task AddRangeAsync(IEnumerable<Product> products)
+        {
+            await _context.Products.AddRangeAsync(products);
+            await _context.SaveChangesAsync();
+        }
 
         public async Task<bool> DeleteAsync(Product product)
         {
@@ -54,6 +59,19 @@ namespace IMS.Repositories
         {
             _context.Products.Update(product);
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _context.Products.CountAsync();
+        }
+
+        public async Task<List<Product>> GetPagedAsync(int pageNumber, int pageSize)
+        {
+            return await _context.Products
+                .OrderByDescending(p => p.Id)
+                .Skip((pageNumber-1) * pageSize)
+                .Take(pageSize).ToListAsync();
         }
     }
 }

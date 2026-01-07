@@ -8,15 +8,25 @@
     ".NETCoreApp,Version=v9.0": {
       "IMS/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.0-preview.7.24406.2",
+          "CsvHelper": "33.1.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
+          "Microsoft.OpenApi": "1.6.22",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0",
           "Swashbuckle.AspNetCore": "7.2.0",
           "System.IdentityModel.Tokens.Jwt": "8.15.0"
         },
         "runtime": {
           "IMS.dll": {}
+        }
+      },
+      "CsvHelper/33.1.0": {
+        "runtime": {
+          "lib/net9.0/CsvHelper.dll": {
+            "assemblyVersion": "33.0.0.0",
+            "fileVersion": "33.1.0.26"
+          }
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -27,14 +37,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.0-preview.7.24406.2": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.0": {
         "dependencies": {
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.0"
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
         },
         "runtime": {
           "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.40602"
+            "fileVersion": "9.0.24.52903"
           }
         }
       },
@@ -408,26 +418,26 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Protocols/8.0.0": {
+      "Microsoft.IdentityModel.Protocols/8.0.1": {
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "8.15.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.IdentityModel.Protocols.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.0.50716"
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722"
           }
         }
       },
-      "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.0": {
+      "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.1": {
         "dependencies": {
-          "Microsoft.IdentityModel.Protocols": "8.0.0",
+          "Microsoft.IdentityModel.Protocols": "8.0.1",
           "System.IdentityModel.Tokens.Jwt": "8.15.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.0.50716"
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.50722"
           }
         }
       },
@@ -607,6 +617,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "CsvHelper/33.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kqfTOZGrn7NarNeXgjh86JcpTHUoeQDMB8t9NVa/ZtlSYiV1rxfRnQ49WaJsob4AiGrbK0XDzpyKkBwai4F8eg==",
+      "path": "csvhelper/33.1.0",
+      "hashPath": "csvhelper.33.1.0.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
@@ -614,12 +631,12 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.0-preview.7.24406.2": {
+    "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hHtfTezPG6KEbDVp2Kc5Qp/viudp0McAy3Ut3HxG7gOJEkt3YZNnPqJputWdlGFwX1HKqp1hQe8onMmuG1xJ3w==",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/9.0.0-preview.7.24406.2",
-      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.9.0.0-preview.7.24406.2.nupkg.sha512"
+      "sha512": "sha512-bs+1Pq3vQdS2lTyxNUd9fEhtMsq3eLUpK36k2t56iDMVrk6OrAoFtvrQrTK0Y0OetTcJrUkGU7hBlf+ORzHLqQ==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/9.0.0",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.9.0.0.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
       "type": "package",
@@ -726,19 +743,19 @@
       "path": "microsoft.identitymodel.logging/8.15.0",
       "hashPath": "microsoft.identitymodel.logging.8.15.0.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Protocols/8.0.0": {
+    "Microsoft.IdentityModel.Protocols/8.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LsBaqTOHusQNl9q0iNuereUl8UoPmKLHalSQ2c/exjlw2JThZeXyRQSINy/eyF/wzRq2HjCa1w2tGcMM7z0e9Q==",
-      "path": "microsoft.identitymodel.protocols/8.0.0",
-      "hashPath": "microsoft.identitymodel.protocols.8.0.0.nupkg.sha512"
+      "sha512": "sha512-uA2vpKqU3I2mBBEaeJAWPTjT9v1TZrGWKdgK6G5qJd03CLx83kdiqO9cmiK8/n1erkHzFBwU/RphP83aAe3i3g==",
+      "path": "microsoft.identitymodel.protocols/8.0.1",
+      "hashPath": "microsoft.identitymodel.protocols.8.0.1.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.0": {
+    "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-prn3KdDxuz8QQBsytAjUGQQqYtWVTheeNTNESfhbkuLN26mUuJ6Wso4GFrUOgsQu0x4Bi8glExPKyTkY0DgtzA==",
-      "path": "microsoft.identitymodel.protocols.openidconnect/8.0.0",
-      "hashPath": "microsoft.identitymodel.protocols.openidconnect.8.0.0.nupkg.sha512"
+      "sha512": "sha512-AQDbfpL+yzuuGhO/mQhKNsp44pm5Jv8/BI4KiFXR7beVGZoSH35zMV3PrmcfvSTsyI6qrcR898NzUauD6SRigg==",
+      "path": "microsoft.identitymodel.protocols.openidconnect/8.0.1",
+      "hashPath": "microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Tokens/8.15.0": {
       "type": "package",
