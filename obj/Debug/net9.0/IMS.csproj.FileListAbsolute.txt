@@ -7,6 +7,7 @@ C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\IMS.runtimeconf
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\IMS.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\IMS.pdb
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Humanizer.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.Build.Locator.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
@@ -20,6 +21,12 @@ C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.Entit
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Mono.TextTemplating.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\Npgsql.dll
@@ -33,6 +40,7 @@ C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\System.Composit
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\System.Composition.Hosting.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\System.Composition.Runtime.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -106,6 +114,7 @@ C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.AssemblyInf
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.csproj.CoreCompileInputs.cache
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.sourcelink.json
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -121,4 +130,3 @@ C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\refint\IMS.dll
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.pdb
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.genruntimeconfig.cache
 C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\ref\IMS.dll
-C:\Users\USER\OneDrive\Documents\DotNet\IMS\IMS\obj\Debug\net9.0\IMS.sourcelink.json

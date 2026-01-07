@@ -7,7 +7,7 @@ namespace IMS.DTOs.Product
         [Required(ErrorMessage = "Product name is required!!")]
         public string Name { get; set; } = null!;
 
-        [Range(0.01, 10000, ErrorMessage = "Price must be between 0.01 and 10000.")]
+        [Range(0.01, 1000000000, ErrorMessage = "Price must be between 0.01 and 10000000.")]
         public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Category is required!!")]

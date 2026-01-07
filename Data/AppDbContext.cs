@@ -8,18 +8,22 @@ namespace IMS.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Product> Products => Set<Product>();
+        public DbSet<User> User => Set<User>();
+        public DbSet<Role> Roles => Set<Role>();
+        public DbSet<UserRole> UserRoles => Set<UserRole>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+             
+            modelBuilder.Entity<UserRole>().HasKey(ur => new { ur.UserId, ur.RoleId });
+            modelBuilder.Entity<UserRole>().HasOne(u => u.User).WithMany(u => u.UserRoles).HasForeignKey(u => u.UserId);
+            modelBuilder.Entity<UserRole>().HasOne(r => r.Role).WithMany(r => r.UserRoles).HasForeignKey(r => r.RoleId);
 
-            modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Laptop", Category = "Electronics", Price = 1200.00m, Quantity = 10, CreatedAt = DateTime.SpecifyKind(new DateTime(2025, 1, 1), DateTimeKind.Utc) },
-                new Product { Id = 2, Name = "Mouse", Category = "Electronics", Price = 25.50m, Quantity = 50, CreatedAt = DateTime.SpecifyKind(new DateTime(2025, 1, 1), DateTimeKind.Utc) },
-                new Product { Id = 3, Name = "Office Chair", Category = "Furniture", Price = 150.00m, Quantity = 15, CreatedAt = DateTime.SpecifyKind(new DateTime(2025, 1, 1), DateTimeKind.Utc) },
-                new Product { Id = 4, Name = "Coffee Mug", Category = "Kitchen", Price = 12.99m, Quantity = 100, CreatedAt = DateTime.SpecifyKind(new DateTime(2025, 1, 1), DateTimeKind.Utc) },
-                new Product { Id = 5, Name = "Notebook", Category = "Stationery", Price = 5.00m, Quantity = 200, CreatedAt = DateTime.SpecifyKind(new DateTime(2025, 1, 1), DateTimeKind.Utc) }
-            );
+            //Unique Constrains
+            modelBuilder.Entity<User>().HasIndex(r => r.Username).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(r => r.Email).IsUnique();
+            modelBuilder.Entity<Role>().HasIndex(r => r.Name).IsUnique();
         }
     }
 }

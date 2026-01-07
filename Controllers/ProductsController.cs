@@ -1,5 +1,6 @@
 ﻿using IMS.DTOs.Product;
 using IMS.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.Controllers
@@ -21,6 +22,7 @@ namespace IMS.Controllers
             return product == null ? NotFound() : Ok(product);
         }
 
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ProductCreateDTO dto)
         {
@@ -28,12 +30,14 @@ namespace IMS.Controllers
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
         }
 
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductUpdateDTO dto)
         {
             return await _service.UpdateAsync(id, dto) ? NoContent() : NotFound();
         }
 
+        [Authorize(Roles ="Admin, Manager")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
