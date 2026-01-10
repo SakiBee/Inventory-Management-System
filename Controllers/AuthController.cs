@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.Controllers
 {
+    /// <summary>
+    /// Manages Auth-related operations
+    /// </summary>
     [ApiController]
     [Route("/[controller]")]
     public class AuthController : ControllerBase
@@ -16,6 +19,15 @@ namespace IMS.Controllers
             _authService = authService;
         }
 
+        /// <summary>
+        /// Register user
+        /// </summary>
+        /// <param name="dto">User register payload</param>
+        /// <returns>The user register</returns>
+        /// <response code="201">User registered successfully</response>
+        /// <response code="400">Invalid input</response>
+        /// <response code="401">Unauthorized</response>
+        /// <response code="403">Forbidden</response>
         [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -26,6 +38,16 @@ namespace IMS.Controllers
             return CreatedAtAction(nameof(Register), result);
         }
 
+
+        /// <summary>
+        /// Login user
+        /// </summary>
+        /// <param name="dto">User login payload</param>
+        /// <returns>The user login</returns>
+        /// <response code="201">User logged in successfully</response>
+        /// <response code="400">Invalid input</response>
+        /// <response code="401">Unauthorized</response>
+        /// <response code="403">Forbidden</response>
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequestDto dto)
         {
@@ -33,6 +55,16 @@ namespace IMS.Controllers
             return Ok(result);
         }
 
+
+        /// <summary>
+        /// Logout user
+        /// </summary>
+        /// <param name="dto">User logout payload</param>
+        /// <returns>The user logout</returns>
+        /// <response code="201">User logged out successfully</response>
+        /// <response code="400">Invalid input</response>
+        /// <response code="401">Unauthorized</response>
+        /// <response code="403">Forbidden</response>
         [Authorize]
         [HttpPost("logout")]
         public IActionResult Logout()

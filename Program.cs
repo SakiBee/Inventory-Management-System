@@ -1,21 +1,26 @@
+using AutoMapper;
 using IMS.Data;
-using IMS.Services;
+using IMS.Mappings;
 using IMS.Middlewares;
 using IMS.Repositories;
 using IMS.Repositories.Interfaces;
+using IMS.Services;
 using IMS.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Controllers
+// 1. Controllers
 builder.Services.AddControllers();
 
-//Auth Config
+// 2. Auth Config
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]!);
 builder.Services.AddAuthentication(options =>
 {
@@ -38,14 +43,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//DATABASE 
+// 3. Database
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection")
-    )
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// Swagger
+// 4. Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -56,7 +59,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Enter: Bearer {your JWT token}"
+        Description = "Enter JWT token: Bearer {token}"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -73,9 +76,14 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    c.IncludeXmlComments(xmlPath);
+
 });
 
-// Services
+// 5. Dependency Injection (Repositories & Services)
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
@@ -84,9 +92,15 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
+// 6. AutoMapper
+builder.Services.AddAutoMapper(typeof(ProductProfile));
+
+// 7. PostgreSQL Timestamp Fix
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
+
+// 8. Seeding & Middleware
 await DbSeeder.SeedAsync(app);
 
 app.UseMiddleware<GlobalExceptionMiddleware>();

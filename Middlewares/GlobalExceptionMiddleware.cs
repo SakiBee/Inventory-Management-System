@@ -26,6 +26,7 @@ namespace IMS.Middlewares
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
 
+                /// <response code="500">Internal server error</response>
                 var response = new
                 {
                     statusCode = context.Response.StatusCode,
